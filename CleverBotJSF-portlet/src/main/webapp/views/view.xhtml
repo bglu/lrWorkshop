@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+
+<f:view
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:icecore="http://www.icefaces.org/icefaces/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+>
+	<h:head />
+	<h:body>
+		<h:outputStylesheet name="cleverbot.css" library="css"></h:outputStylesheet>
+		
+		<div class="cleverbot dialog-box">
+			<ui:repeat var="chatLine" value="#{cleverBotBean.chatLines}">
+				<p>
+					<h:outputText value="#{chatLine}" escape="false"></h:outputText>
+				</p>
+			</ui:repeat>
+		
+		</div>
+	
+		<h:form>
+			<h:inputText value="#{cleverBotBean.userLine}" style="width: 95%;"></h:inputText>
+			<br />
+			<h:commandButton action="#{cleverBotBean.sendLine}" value="Senden"></h:commandButton>
+		</h:form>
+	</h:body>
+</f:view>

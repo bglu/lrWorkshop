@@ -1,0 +1,12 @@
+.cleverbot.dialog-box {
+	height: 200px;
+	overflow-y: scroll;
+}
+
+span.speaker-bot {
+	color: red;
+}
+
+span.speaker-human {
+	color: blue;
+}
