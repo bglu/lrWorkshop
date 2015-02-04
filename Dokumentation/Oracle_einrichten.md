@@ -165,4 +165,12 @@ Im nun folgenden Dialog vergeben wir folgende Werte:
 
 Mit der Schaltfläche *Test* können wir die Einstellungen prüfen.
 
+Wenn der Test erfolgreich ist, schließen wir den Dialog mit *OK*. Ein Doppelklick auf den neu angelegten Alias öffnen nun ein Dialogfeld, dass wir zum Verbinden benutzen können. Hier einfach auf *Connect* klicken.
 
+![Screenshot - SquiirelSQL - Verbinden](https://github.com/bglu/lrWorkshop/blob/master/Dokumentation/img/squirrel03.png)
+
+Evtl. wird Squiirel meckern, dass das Laden des Schemas ungewöhnlich lange dauert. Dies ist normal und kann ignoriert werden.
+
+Wenn die Schemata geladen sind, sollte es im Baum das Schema *SA* geben, welches wir mit Doppelklick öffnen können. Mit einem Klick auf *Table* können wir auch die Tabellen von Liferay öffnen und durchstöbern.
+
+![Screenshot - SquiirelSQL - Tabellen ansehen](https://github.com/bglu/lrWorkshop/blob/master/Dokumentation/img/squirrel04.png)
