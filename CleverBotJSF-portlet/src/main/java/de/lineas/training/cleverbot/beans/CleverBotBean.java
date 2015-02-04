@@ -11,6 +11,7 @@ import com.google.code.chatterbotapi.ChatterBotType;
 
 import de.lineas.training.cleverbot.model.ChatLine;
 import de.lineas.training.cleverbot.persistence.ChatLineStore;
+import de.lineas.training.cleverbot.persistence.ChatLineStorer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +22,7 @@ public class CleverBotBean {
 	private String userLine = "";
 	
 	@ManagedProperty(value = "#{chatLineStore}")
-	private ChatLineStore chatLineStore;
+	private ChatLineStorer chatLineStore;
 	
 	private static ChatterBotFactory factory = new ChatterBotFactory();
 	
@@ -73,11 +74,11 @@ public class CleverBotBean {
 		return chatLineStore.getChatLines();
 	}
 
-	public void setChatLineStore(ChatLineStore chatLineStore) {
+	public void setChatLineStore(ChatLineStorer chatLineStore) {
 		this.chatLineStore = chatLineStore;
 	}
 
-	public ChatLineStore getChatLineStore() {
+	public ChatLineStorer getChatLineStore() {
 		return chatLineStore;
 	}
 
