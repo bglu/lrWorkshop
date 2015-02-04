@@ -64,7 +64,7 @@ Nun verbinden wir uns mit unserem System-Benutzer:
 
     SQL> connect
     user-name: system
-    password: [system passort siehe Abbildung 4]
+    password: [system passwort siehe Abbildung 4]
 
 Jetzt können wir den Tablespace mit folgendem SQL Befehl anlegen:
 
@@ -116,7 +116,7 @@ Hier nun im Reiter *Classpath* die Bibliothek mit *Add External JARs...* hinzuf�
 
 Abschließend müssen wir Liferay noch mitteilen, dass es sich beim Server-Start mit der Oracle Datenbank verbinden soll. Dazu erstellen wir die Datei `C:\liferay\portal\portal-ext.properties`.
 
-Diese wird beim starten des Servers automatisch geladen und wird genutzt, um proerties zu überschreiben (die Standardwerte).
+Diese wird beim Starten des Servers automatisch geladen und wird genutzt, um proerties zu überschreiben (die Standardwerte).
 
 In der Datei tragen wir folgende Zeilen ein:
 
@@ -146,8 +146,8 @@ SQuirrel SQL ist ein SQL Client, mit dem man Anfragen an eine Datenbank senden k
 - Werden von der Anwendung alle Daten (richtig) gelesen?
 - Werden Daten (richtig) geschrieben?
 - Welche Daten sind aktuell in den Tabellen?
- 
-Das Programm wird im Workshop verteilt. Man kann es einfach in einen beliebigen Ordner auf der Festplatte kopieren und dort mit der `squirrel-sql.bat` starten.
+
+Das Programm wird im Workshop verteilt. Man kann es einfach in einen beliebigen Ordner auf der Festplatte kopieren und dort mit der `squirrel-sql.bat` starten. *Vorher bitte den Liferay Server mindestens einmal vollständig starten, damit die entsprechenden Tabellen angelegt werden.**
 
 Dort fügen wir einen neuen *Alias* hinzu, sodaß wir uns immer wieder bequem mit den gleichen Einstellungen verbinden können:
 
