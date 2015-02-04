@@ -90,6 +90,7 @@ Dieser Benutzer hat jedoch noch keine Berechtigungen. Er darf sich aktuell noch 
 
 ##Liferay mit Oracle Verbinden
 
+###Obdbc kopieren
 Damit Liferay mit Oracle (anstelle der H2-DB) arbeiten kann - (Liferay kann nur mit einer Datenbank pro Portal arbeiten, nicht mit mehreren für verschiedene Portlets), wird eine `ojdbc.jar` von Oracle benötigt.
 
 Diese wird bei der Oracle XE installation mit bereit gestellt unter: `C:\oraclexe\app\oracle\product\11.2.0\server\jdbc\lib\ojdbc6.jar`
@@ -98,6 +99,8 @@ Diese wird bei der Oracle XE installation mit bereit gestellt unter: `C:\oraclex
 
 Wir kopieren (**nicht verschieben/auschneiden**) diese Bibliothek nach `C:\liferay\tomcat\lib\ext`.
 
+
+###Ojdbc in Server Classpath eintragen
 In der Eclipse öffnen wir nun die Servereinstellungen, indem wir doppelt auf dem Server im linken unteren Bereich klicken. Dann in den Einstellungen auf den Link `Open launch configuration` klicken:
 
 ![Screenshot - Eclipse - Open launch configuration](https://github.com/bglu/lrWorkshop/blob/master/Dokumentation/img/eclipse-launch-config.png)
@@ -107,4 +110,59 @@ In der Eclipse öffnen wir nun die Servereinstellungen, indem wir doppelt auf de
 Hier nun im Reiter *Classpath* die Bibliothek mit *Add External JARs...* hinzufügen. Anschließend mit Stg+S Speichern.
 
 ![Screenshot - Eclipse - Server Classpath](https://github.com/bglu/lrWorkshop/blob/master/Dokumentation/img/eclipse-server-classpath.png)
+
+
+###Portal-ext.properties erstellen
+
+Abschließend müssen wir Liferay noch mitteilen, dass es sich beim Server-Start mit der Oracle Datenbank verbinden soll. Dazu erstellen wir die Datei `C:\liferay\portal\portal-ext.properties`.
+
+Diese wird beim starten des Servers automatisch geladen und wird genutzt, um proerties zu überschreiben (die Standardwerte).
+
+In der Datei tragen wir folgende Zeilen ein:
+
+    dbc.default.driverClassName=oracle.jdbc.driver.OracleDriver
+    jdbc.default.url=jdbc:oracle:thin:@localhost:1521:xe
+    jdbc.default.username=sa
+    jdbc.default.password=[passwort von sa - siehe oben]
+
+Wenn wir den Server nun starten, sollte Liferay im Log melden, dass es sich mit der Oracle Datenbank verbunden hat:
+
+    Loading file:/C:/Liferay/portal/portal-ext.properties
+    Loading file:/C:/Liferay/portal/portal-setup-wizard.properties
+    Loading file:/C:/Liferay/portal/portal-ide.properties
+    Feb 04, 2015 7:05:38 AM org.apache.catalina.core.ApplicationContext log
+    INFORMATION: Initializing Spring root WebApplicationContext
+    07:05:44,649 INFO  [localhost-startStop-1][DialectDetector:71] Determine dialect for Oracle 11
+    07:05:44,695 INFO  [localhost-startStop-1][DialectDetector:136] Found dialect org.hibernate.dialect.Oracle10gDialect
+    Starting Liferay Portal Community Edition 6.2 CE GA2 (Newton / Build 6201 / March 20, 2014)
+
+
+
+    
+##SQuirrel SQL
+
+SQuirrel SQL ist ein SQL Client, mit dem man Anfragen an eine Datenbank senden kann. Wir verwenden sie bei der Liferay-Entwicklung, um den Ablauf des Datentransfers unserer Anwendungen verfolgen zu können. Konkret wollen wir folgende Punkte prüfen können:
+
+- werden von der Anwendung alle Daten gelesen?
+- werden Daten geschrieben?
+- Was ist aktuell in den Tabellen
+ 
+Das Programm wird im Workshop verteilt. Man kann es einfach in einen beliebigen Ordner auf der Festplatte kopieren und dort mit der `squirrel-sql.bat` starten.
+
+Dort fügen wir einen neuen *Alias* hinzu, sodaß wir uns immer wieder bequem mit den gleichen Einstellungen verbinden können:
+
+![Screenshot - SquiirelSQL - Alias anlegen](https://github.com/bglu/lrWorkshop/blob/master/Dokumentation/img/squirrel01.png)
+
+Im nun folgenden Dialog vergeben wir folgende Werte:
+
+- Name: [frei wählbar]
+- Driver: Oracle Thin Driver
+- URL: jdbc:oracle:thin:@localhost:1521:xe
+- UserName: sa
+- Password: [passwort des Benutzers sa]
+
+![Screenshot - SquiirelSQL - Alias anlegen](https://github.com/bglu/lrWorkshop/blob/master/Dokumentation/img/squirrel02.png)
+
+Mit der Schaltfläche *Test* können wir die Einstellungen prüfen.
+
 
