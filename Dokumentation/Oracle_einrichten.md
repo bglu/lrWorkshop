@@ -98,4 +98,9 @@ Diese wird bei der Oracle XE installation mit bereit gestellt unter: `C:\oraclex
 
 Wir kopieren (**nicht verschieben/auschneiden**) diese Bibliothek nach `C:\liferay\tomcat\lib\ext`.
 
+In der Eclipse öffnen wir nun die Servereinstellungen, indem wir doppelt auf dem Server im linken unteren Bereich klicken. Dann in den Einstellungen auf den Link `Open launch configuration` klicken:
+
+![Screenshot - Eclipse - Open launch configuration](https://github.com/bglu/lrWorkshop/blob/master/Dokumentation/img/eclipse-launch-config.png)
+
+"Abbildung 8"
 
