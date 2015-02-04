@@ -1,3 +1,19 @@
+#Oracle Einrichten
+
+Liferay arbeitet in der Standard-Konfiguration mit einer [H2-SQL](http://en.wikipedia.org/wiki/H2_(DBMS)) Datenbank. Da es sich dabei um eine *In-Memory* Datenbank handelt, können wir im laufenden Betrieb nicht mit anderen Programmen darauf zugreifen, um die aktuellen Daten in den Tabellen zu betrachten.
+
+Deshalb wollen wir Liferay mit einer *richtigen* Datenbank verbinden. Als Konzernstandard wurde Oracle gewählt.
+
+##Oracle XE installieren
+
+Wir verwenden im Workshop die Kostenlose Oracle XE version. Die Installationsdateien werden im Workshop verteilt und umfassen:
+- OracleXE112_Win64.zip
+- Install_Info.docx (Detailierte Installationsanleitung)
+
+###Kurzanleitung
+- Zip entpacken und `Disk1\setup.exe` ausführen
+
+
 
 ##Eigenen Tablespace und Benutzer für Liferay anlegen
 
@@ -30,7 +46,7 @@ Für diesen Tablespace erstellen wir noch einen Benutzer. Liferay hat eine Konve
 
 Dabei ist [password] durch ein einfaches Passwort zu ersetzen.
 
-Dieser Benutzer hat jedoch noch keine Berechtigungen. Er darf sich aktuell noch nicht einmal mit der Datenbank verbinden. Deshalb müssen wir ihm diese Rechte geben. Der einfach halt halber geben wir ihm *alle* Rechte. **Bitte niemals auf einer Produktiven Maschine so umsetzen!***
+Dieser Benutzer hat jedoch noch keine Berechtigungen. Er darf sich aktuell noch nicht einmal mit der Datenbank verbinden. Deshalb müssen wir ihm diese Rechte geben. Der einfach halt halber geben wir ihm *alle* Rechte. **Bitte niemals auf einer produktiven Maschine so umsetzen!**
 
     SQL> grant connect to sa;
     SQL> grant all privileges to sa;
