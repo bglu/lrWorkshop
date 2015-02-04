@@ -143,9 +143,9 @@ Wenn wir den Server nun starten, sollte Liferay im Log melden, dass es sich mit 
 
 SQuirrel SQL ist ein SQL Client, mit dem man Anfragen an eine Datenbank senden kann. Wir verwenden sie bei der Liferay-Entwicklung, um den Ablauf des Datentransfers unserer Anwendungen verfolgen zu können. Konkret wollen wir folgende Punkte prüfen können:
 
-- werden von der Anwendung alle Daten gelesen?
-- werden Daten geschrieben?
-- Was ist aktuell in den Tabellen
+- Werden von der Anwendung alle Daten (richtig) gelesen?
+- Werden Daten (richtig) geschrieben?
+- Welche Daten sind aktuell in den Tabellen?
  
 Das Programm wird im Workshop verteilt. Man kann es einfach in einen beliebigen Ordner auf der Festplatte kopieren und dort mit der `squirrel-sql.bat` starten.
 
