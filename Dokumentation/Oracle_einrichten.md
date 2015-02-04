@@ -13,6 +13,18 @@ Wir verwenden im Workshop die Kostenlose Oracle XE version. Die Installationsdat
 ###Kurzanleitung
 - Zip entpacken und `Disk1\setup.exe` ausführen
 
+![Screenshot Oracle Installer 1](https://github.com/bglu/lrWorkshop/blob/master/Dokumentation/img/oracle-installer01.png)
+![Screenshot Oracle Installer 2](https://github.com/bglu/lrWorkshop/blob/master/Dokumentation/img/oracle-installer02.png)
+![Screenshot Oracle Installer 3](https://github.com/bglu/lrWorkshop/blob/master/Dokumentation/img/oracle-installer03.png)
+
+**Achtung!!!**
+
+**Dieses Passwort unbedingt merken!** Es ist das Systempasswort.
+
+![Screenshot Oracle Installer 4](https://github.com/bglu/lrWorkshop/blob/master/Dokumentation/img/oracle-installer04.png)
+
+![Screenshot Oracle Installer 5](https://github.com/bglu/lrWorkshop/blob/master/Dokumentation/img/oracle-installer05.png)
+![Screenshot Oracle Installer 6](https://github.com/bglu/lrWorkshop/blob/master/Dokumentation/img/oracle-installer06.png)
 
 
 ##Eigenen Tablespace und Benutzer für Liferay anlegen
