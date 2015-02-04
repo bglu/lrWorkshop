@@ -6,7 +6,7 @@ Deshalb wollen wir Liferay mit einer *richtigen* Datenbank verbinden. Als Konzer
 
 ##Oracle XE installieren
 
-Wir verwenden im Workshop die Kostenlose Oracle XE version. Die Installationsdateien werden im Workshop verteilt und umfassen:
+Wir verwenden im Workshop die Kostenlose Oracle XE Version. Die Installationsdateien werden im Workshop verteilt und umfassen:
 - OracleXE112_Win64.zip
 - Install_Info.docx (Detailierte Installationsanleitung)
 
