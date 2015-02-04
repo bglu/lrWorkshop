@@ -14,22 +14,36 @@ Wir verwenden im Workshop die Kostenlose Oracle XE Version. Die Installationsdat
 - Zip entpacken und `Disk1\setup.exe` ausführen
 
 ![Screenshot Oracle Installer 1](https://github.com/bglu/lrWorkshop/blob/master/Dokumentation/img/oracle-installer01.png)
-![Screenshot Oracle Installer 2](https://github.com/bglu/lrWorkshop/blob/master/Dokumentation/img/oracle-installer02.png)
+
+"Abbildung 1"
+
+![Screenshot Oracle Installer 2](https://github.com/bglu/lrWorkshop/blob/master/Dokumentation/img/oracle-installer02.png) 
+
+"Abbildung 2"
 
 **Installationsort**
 
 Wir empfehlen, den Standard-Wert zu übernehmen: `c:\oraclexe\`
 
-![Screenshot Oracle Installer 3](https://github.com/bglu/lrWorkshop/blob/master/Dokumentation/img/oracle-installer03.png)
+![Screenshot Oracle Installer 3](https://github.com/bglu/lrWorkshop/blob/master/Dokumentation/img/oracle-installer03.png) 
+
+"Abbildung 3"
 
 **Achtung!!!**
 
 **Dieses Passwort unbedingt merken!** Es ist das Systempasswort.
 
-![Screenshot Oracle Installer 4](https://github.com/bglu/lrWorkshop/blob/master/Dokumentation/img/oracle-installer04.png)
+![Screenshot Oracle Installer 4](https://github.com/bglu/lrWorkshop/blob/master/Dokumentation/img/oracle-installer04.png) 
 
-![Screenshot Oracle Installer 5](https://github.com/bglu/lrWorkshop/blob/master/Dokumentation/img/oracle-installer05.png)
-![Screenshot Oracle Installer 6](https://github.com/bglu/lrWorkshop/blob/master/Dokumentation/img/oracle-installer06.png)
+"Abbildung 4"
+
+![Screenshot Oracle Installer 5](https://github.com/bglu/lrWorkshop/blob/master/Dokumentation/img/oracle-installer05.png) 
+
+"Abbildung 5"
+
+![Screenshot Oracle Installer 6](https://github.com/bglu/lrWorkshop/blob/master/Dokumentation/img/oracle-installer06.png) 
+
+"Abbildung 6"
 
 
 ##Eigenen Tablespace und Benutzer für Liferay anlegen
@@ -44,11 +58,13 @@ Zuerst öffnen wir ein Oracle SQL Terminal. Dieses finden wir im Starmenü:
 
 ![Screenshot Run SQL Command](https://github.com/bglu/lrWorkshop/blob/master/Dokumentation/img/Oracle_RunSql.png)
 
+"Abbildung 7"
+
 Nun verbinden wir uns mit unserem System-Benutzer:
 
     SQL> connect
     user-name: system
-    passowrd: [password]
+    password: [system passort siehe Abbildung 4]
 
 Jetzt können wir den Tablespace mit folgendem SQL Befehl anlegen:
 
@@ -63,7 +79,7 @@ Für diesen Tablespace erstellen wir noch einen Benutzer. Liferay hat eine Konve
 
 Dabei ist [password] durch ein einfaches Passwort zu ersetzen.
 
-Dieser Benutzer hat jedoch noch keine Berechtigungen. Er darf sich aktuell noch nicht einmal mit der Datenbank verbinden. Deshalb müssen wir ihm diese Rechte geben. Der einfach halt halber geben wir ihm *alle* Rechte. **Bitte niemals auf einer produktiven Maschine so umsetzen!**
+Dieser Benutzer hat jedoch noch keine Berechtigungen. Er darf sich aktuell noch nicht einmal mit der Datenbank verbinden. Deshalb müssen wir ihm diese Rechte geben. Der einfach halt halber geben wir ihm *alle* Rechte. <span style="color: red">**Bitte niemals auf einer produktiven Maschine so umsetzen!!!**</span>
 
     SQL> grant connect to sa;
     SQL> grant all privileges to sa;
