@@ -104,3 +104,7 @@ In der Eclipse öffnen wir nun die Servereinstellungen, indem wir doppelt auf de
 
 "Abbildung 8"
 
+Hier nun im Reiter *Classpath* die Bibliothek mit *Add External JARs...* hinzufügen. Anschließend mit Stg+S Speichern.
+
+![Screenshot - Eclipse - Server Classpath](https://github.com/bglu/lrWorkshop/blob/master/Dokumentation/img/eclipse-server-classpath.png)
+
