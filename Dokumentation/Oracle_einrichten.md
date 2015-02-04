@@ -79,8 +79,23 @@ Für diesen Tablespace erstellen wir noch einen Benutzer. Liferay hat eine Konve
 
 Dabei ist [password] durch ein einfaches Passwort zu ersetzen.
 
-Dieser Benutzer hat jedoch noch keine Berechtigungen. Er darf sich aktuell noch nicht einmal mit der Datenbank verbinden. Deshalb müssen wir ihm diese Rechte geben. Der einfach halt halber geben wir ihm *alle* Rechte. <span style="color: red">**Bitte niemals auf einer produktiven Maschine so umsetzen!!!**</span>
+Dieser Benutzer hat jedoch noch keine Berechtigungen. Er darf sich aktuell noch nicht einmal mit der Datenbank verbinden. Deshalb müssen wir ihm diese Rechte geben. Der einfach halt halber geben wir ihm *alle* Rechte. <strong><font color="#FF0000">Bitte niemals auf einer produktiven Maschine so umsetzen!!!</font></strong>
 
     SQL> grant connect to sa;
     SQL> grant all privileges to sa;
+
+
+
+
+
+##Liferay mit Oracle Verbinden
+
+Damit Liferay mit Oracle (anstelle der H2-DB) arbeiten kann - (Liferay kann nur mit einer Datenbank pro Portal arbeiten, nicht mit mehreren für verschiedene Portlets), wird eine `ojdbc.jar` von Oracle benötigt.
+
+Diese wird bei der Oracle XE installation mit bereit gestellt unter: `C:\oraclexe\app\oracle\product\11.2.0\server\jdbc\lib\ojdbc6.jar`
+
+**Bitte darauf achten, die Version mit der 6 zu nehmen.** Dieses ist zu dem jdk 6 kombatible, mit dem wir mit dem von Liferay mitgelieferten Tomcat arbeiten.
+
+Wir kopieren (**nicht verschieben/auschneiden**) diese Bibliothek nach `C:\liferay\tomcat\lib\ext`.
+
 
