@@ -15,6 +15,11 @@ Wir verwenden im Workshop die Kostenlose Oracle XE Version. Die Installationsdat
 
 ![Screenshot Oracle Installer 1](https://github.com/bglu/lrWorkshop/blob/master/Dokumentation/img/oracle-installer01.png)
 ![Screenshot Oracle Installer 2](https://github.com/bglu/lrWorkshop/blob/master/Dokumentation/img/oracle-installer02.png)
+
+**Installationsort**
+
+Wir empfehlen, den Standard-Wert zu übernehmen: `c:\oraclexe\`
+
 ![Screenshot Oracle Installer 3](https://github.com/bglu/lrWorkshop/blob/master/Dokumentation/img/oracle-installer03.png)
 
 **Achtung!!!**
