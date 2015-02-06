@@ -15,26 +15,34 @@ JSF, IceFaces
 
 In der `pom.xml` das Profile mit folgenden Zeilen aktivieren:
 
-    <activation>
-		<activeByDefault>true</activeByDefault>
-	</activation>
+```XML
+<activation>
+    <activeByDefault>true</activeByDefault>
+</activation>
+```
 
 Dependencies:
 
-        <dependency>
-	    <groupId>com.google.guava</groupId>
-	    <artifactId>guava</artifactId>
-	    <version>18.0</version>
-        </dependency>
+```XML
+<dependency>
+    <groupId>com.google.guava</groupId>
+    <artifactId>guava</artifactId>
+    <version>18.0</version>
+</dependency>
+```
     
 >Wir binden an dieser Stelle [Google Guava](https://code.google.com/p/guava-libraries/) ein. Dies ist eine Hilfsbibliothek, die Java um einige Funktionaliäten erweitert, sodaß wir besser lesbaren Code schreiben können. So können wir statt:
 >
+> ```java
 >       String s = ....;
 >       if (s != null && ! s.empty())
->	
+>```
+>
 >schreiben:
 >
+> ```java
 >       if (! Strings.isNullOrEmpty(s))
+> ```
 
 	
 
