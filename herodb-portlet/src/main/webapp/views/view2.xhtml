@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+
+<f:view
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:icecore="http://www.icefaces.org/icefaces/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+>
+	<h:head />
+	<h:body>
+		<h3>Powers:</h3>
+		
+		<h:form>
+			<ace:dataTable
+				id="powerTable"
+				value="#{powerBean.powers}"
+				var="power"
+				selectionMode="single"
+				rowSelectListener="#{powerBean.selectListener}"
+				rowUnselectListener="#{powerBean.unselectListener}"
+			>
+				
+				
+				<ace:column id="name">
+					<f:facet name="header">
+						Name
+					</f:facet>
+					<h:outputText value="#{power.powerName}"></h:outputText>
+				</ace:column>
+				
+				<ace:column id="description">
+					<f:facet name="header">
+						Beschreibung
+					</f:facet>
+					<h:outputText value="#{power.powerDescription}"></h:outputText>
+				</ace:column>
+			
+			</ace:dataTable>
+		
+			<hr />
+		
+			<table>
+				
+				<tr>
+					<td>Name:</td>
+					<td><h:inputText value="#{powerBean.powerName}"></h:inputText></td>
+				</tr>
+				<tr>
+					<td>Beschreibung:</td>
+					<td><h:inputText value="#{powerBean.powerDescription}"></h:inputText></td>
+				</tr>
+			</table>
+			
+			<h:commandButton action="#{powerBean.addPower}"    value="Add Power"></h:commandButton>
+			<h:commandButton action="#{powerBean.editPower}"   value="Edit Power"></h:commandButton>
+			<h:commandButton action="#{powerBean.deletePower}" value="Delete Power"></h:commandButton>
+		</h:form>
+		
+		<p>SelectedPower: <h:outputText value="#{powerBean.selectedPower}"></h:outputText></p>
+		
+	</h:body>
+</f:view>

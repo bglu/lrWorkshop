@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="de.lineas.training.herodb.model.Power">
+		<field name="PowerId" type="long" />
+		<field name="PowerName" type="String" />
+		<field name="PowerDescription" type="String" />
+	</model>
+</model-hints>
