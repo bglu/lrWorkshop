@@ -465,9 +465,9 @@ Stattdessen wollen wir nun die Daten in einer Tabelle auflisten, in der man Zeil
 
 Um auf Ereignisse im Browser (Benutzer klickt auf ein Element) zu reagieren, wird i.d.R. JavaScript (jQuery) verwendet. Wir können mit JavaScript jedoch nur sehr umständlich auf unsere Bean zugreifen, bzw. Daten an die Bean senden. Um dieses Problem zu lösen, wurde JSF (Java Server Faces) um einige Frameworks erweitert, welche UI-Komponenten bereistellen, sodaß man ohne JavaScript auskommt. Zu diesen Frameworks gehören:
 
-- [http://www.icesoft.org/java/projects/ICEfaces/overview.jsf](IceFaces) 
-- [http://primefaces.org/](PrimeFaces) 
-- [http://www.liferay.com/de/community/liferay-projects/liferay-faces/overview](LiferayFaces) 
+- [IceFaces](http://www.icesoft.org/java/projects/ICEfaces/overview.jsf)
+- [PrimeFaces](http://primefaces.org/)
+- [LiferayFaces](http://www.liferay.com/de/community/liferay-projects/liferay-faces/overview)
 
 Als Konzernstandard wurde *IceFaces* gewählt.
 
