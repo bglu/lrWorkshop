@@ -392,38 +392,46 @@ public String editPower() {
         <ui:repeat var="power" value="#{powerBean.powers}">
             <tr>
                 <td>
-                    <h:outputText value="#{power.powerId}" />:
+                    <h:outputText value="#{power.powerId}"/>
+                    :
                 </td>
                 <td>
-		    <h:outputText value="#{power.powerName}" />:
-		</td>
-		<td>
-		    <h:outputText value="#{power.powerDescription}" />
-		</td>
-	    </tr>
-	</ui:repeat>
+                    <h:outputText value="#{power.powerName}"/>
+                    :
+                </td>
+                <td>
+                    <h:outputText value="#{power.powerDescription}"/>
+                </td>
+            </tr>
+        </ui:repeat>
     </table>
-		
+
     <h:form>
         <table>
             <tr>
                 <td>ID:</td>
-                <td><h:inputText value="#{powerBean.powerId}"></h:inputText></td>
+                <td>
+                    <h:inputText value="#{powerBean.powerId}"></h:inputText>
+                </td>
             </tr>
             <tr>
                 <td>Name:</td>
-                <td><h:inputText value="#{powerBean.powerName}"></h:inputText></td>
-	    </tr>
-	    <tr>
-	        <td>Description:</td>
-	        <td><h:inputText value="#{powerBean.powerDescription}"></h:inputText></td>
-	    </tr>
-	</table>
-	
-	<h:commandButton action="#{powerBean.addPower}" value="Add Power"></h:commandButton>
-	<h:commandButton action="#{powerBean.editPower}" value="Edit Power"></h:commandButton>
+                <td>
+                    <h:inputText value="#{powerBean.powerName}"></h:inputText>
+                </td>
+            </tr>
+            <tr>
+                <td>Description:</td>
+                <td>
+                    <h:inputText value="#{powerBean.powerDescription}"></h:inputText>
+                </td>
+            </tr>
+        </table>
+
+        <h:commandButton action="#{powerBean.addPower}" value="Add Power"></h:commandButton>
+        <h:commandButton action="#{powerBean.editPower}" value="Edit Power"></h:commandButton>
     </h:form>
-		
+
 </h:body>
 ```
 
