@@ -203,9 +203,9 @@ Somit können wir Datensätze aus der Datenbank lesen und anzeigen.
 
 Wenn wir neue Datensätze zur Datenbank hinzufügen möchten, können wir wieder *PowerLocalServiceUtil* verwenden. Diese stellt dafür jedoch nur Methoden zur Verfügung, um Power Objekte zu speichern. Wir können ein Power Objekt jedoch nicht erzeugen, da wir hierfür die nächste freie ID für den Primärschlüssel ermitteln müssten. Ingesammt wäre das zu viel Code in der View, welcher nicht in deren Verantwortungsbereich liegt.
 
-Stattdessen erweitern wir den Service um eine Methode, die nur noch die beiden Strings für den PowerName und PowerDescription bekommt, darauf ein Power Objekt erstellt und diese in die Datenbank schreibt.
+Stattdessen erweitern wir den Service um eine Methode, die nur noch die beiden Strings für den PowerName und PowerDescription bekommt, daraus ein Power Objekt erstellt und diese in die Datenbank schreibt.
 
-Dazu schreiben wir folge Methode in die `/herodb-portlet/src/main/java/de/lineas/training/herodb/service/impl/PowerLocalServiceImpl.java`:
+Dazu schreiben wir folggende Methode in die `/herodb-portlet/src/main/java/de/lineas/training/herodb/service/impl/PowerLocalServiceImpl.java`:
 
 	public Power addPower(String name, String description) {
 			Power p = new PowerClp();
@@ -313,7 +313,7 @@ Folgende Methode einfügen in `PowerLocalServiceImpl`:
 		return p;
 	}
 
-Service-Builde neu durchlaufen lassen. Projekt in Eclipse aktualisieren
+Service-Builde neu durchlaufen lassen. Projekt in Eclipse aktualisieren.
 
 
 ###Bean erweitern:
@@ -450,9 +450,9 @@ Stattdessen wollen wir nun die Daten in einer Tabelle auflisten, in der man Zeil
 
 Um auf Ereignisse im Browser (Benutzer klickt auf ein Element) zu reagieren, wird i.d.R. JavaScript (jQuery) verwendet. Wir können mit JavaScript jedoch nur sehr umständlich auf unsere Bean zugreifen, bzw. Daten an die Bean senden. Um dieses Problem zu lösen, wurde JSF (Java Server Faces) um einige Frameworks erweitert, welche UI-Komponenten bereistellen, sodaß man ohne JavaScript auskommt. Zu diesen Frameworks gehören:
 
-    - (IceFaces) [http://www.icesoft.org/java/projects/ICEfaces/overview.jsf]
-    - (PrimeFaces) [http://primefaces.org/]
-    - (LiferayFaces) [http://www.liferay.com/de/community/liferay-projects/liferay-faces/overview]
+- [http://www.icesoft.org/java/projects/ICEfaces/overview.jsf](IceFaces) 
+- [http://primefaces.org/](PrimeFaces) 
+- [http://www.liferay.com/de/community/liferay-projects/liferay-faces/overview](LiferayFaces) 
 
 Als Konzernstandard wurde *IceFaces* gewählt.
 
@@ -581,6 +581,4 @@ Die DataTable sieht im Ganzen also so aus:
 
     	</ace:dataTable>
 
-
-Und unsere Bean:
 
