@@ -21,11 +21,11 @@ In der `pom.xml` das Profile mit folgenden Zeilen aktivieren:
 
 Dependencies:
 
-    <dependency>
-	<groupId>com.google.guava</groupId>
-	<artifactId>guava</artifactId>
-	<version>18.0</version>
-    </dependency>
+        <dependency>
+	    <groupId>com.google.guava</groupId>
+	    <artifactId>guava</artifactId>
+	    <version>18.0</version>
+        </dependency>
     
 >Wir binden an dieser Stelle [Google Guava](https://code.google.com/p/guava-libraries/) ein. Dies ist eine Hilfsbibliothek, die Java um einige Funktionaliäten erweitert, sodaß wir besser lesbaren Code schreiben können. So können wir statt:
 >
@@ -38,7 +38,7 @@ Dependencies:
 
 	
 
-Testen, ob portlet mit Maven gebaut werden kann. Dazu Konsole im Hauptverzeichnis des Portlets öffnen (`C:\liferay\workspace\herodb-portlet`), und folgenden Befehl absenden:
+Nun testen wir, ob das Portlet mit Maven gebaut werden kann. Dazu Konsole im Hauptverzeichnis des Portlets öffnen (`C:\liferay\workspace\herodb-portlet`), und folgenden Befehl absenden:
 
     mvn package
 
@@ -55,7 +55,7 @@ Hier sollte es zu einer Meldung kommen:
 
 Um mit der Datenbank zu Arbeiten, stellt Lifeay den sogenannten `Service-Builder` zur Verfügung. Dieser stellt sicher, dass alle Portlets einheitlich auf die Datenbank des Portals zugreifen.
 
-**Achtung:** Es wird dringend davon ageraten, selber *etwa per SQL* auf der Datenbank zu arbeiten. Liferay behählt einen Cache der Daten vor. Im schlimmsten Fall kann es bei Abweichungen zu inkonsistenten Daten kommen.
+> **Achtung:** Es wird dringend davon ageraten, selber *etwa per SQL* auf der Datenbank zu arbeiten. Liferay behählt einen Cache der Daten vor. Im schlimmsten Fall kann es bei Abweichungen zu inkonsistenten Daten kommen.
 
 Für uns als Entwickler bedeutet dies, dass wir alle Datenbank-Aufgaben mit dem Service-Builder realisieren können und müssen.
 
