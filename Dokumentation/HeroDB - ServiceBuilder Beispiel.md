@@ -267,45 +267,51 @@ Nun müssen wir den Service-Builder erneut durchlaufen lassen, damit diese Metho
 ###Controller und Bean
 
 Nun können wir in userer Bean einen Action-Listener zum Hinuzfügen von Powers einfügen:
-	
-	//--- actions
-	public String addPower() {
-		if (! powerName.isEmpty() && !powerDescription.isEmpty()) {
-			Power p = PowerLocalServiceUtil.addPower(powerName, powerDescription);
-			if (p != null){
-				System.out.println(String.format("Power added: %s", p.getPowerName()));
-			} else {
-				System.err.println(String.format("Power was NOT added: ", powerName));
-			}
-		}
 
-		updatePowers();
-
-		return "";
-	}
+```Java
+//--- actions
+public String addPower() {
+    if (! powerName.isEmpty() && !powerDescription.isEmpty()) {
+        Power p = PowerLocalServiceUtil.addPower(powerName, powerDescription);
+        if (p != null){
+            System.out.println(String.format("Power added: %s", p.getPowerName()));
+        } else {
+            System.err.println(String.format("Power was NOT added: ", powerName));
+        }
+    }
+    
+    updatePowers();
+    
+    return "";
+}
+```
 
 Außerdem brauchen wir in der Bean noch zwei Strings (mit Gettern und Settern), um den PowerName und die PowerDescription in der View zu halten:
 
-    private String powerName 		= "";
-	private String powerDescription = "";
+```java
+private String powerName 	= "";
+private String powerDescription = "";
+```
 
 
 Wir erweitern unsere View um ein Formular, um einen neuen Datensatz anzulegen (direkt unter der ul liste):
 
-    <h:form>
-		<table>
-			<tr>
-				<td>Name:</td>
-				<td><h:inputText value="#{powerBean.powerName}"></h:inputText></td>
-			</tr>
-			<tr>
-				<td>Description:</td>
-				<td><h:inputText value="#{powerBean.powerDescription}"></h:inputText></td>
-			</tr>
-		</table>
-			
-		<h:commandButton action="#{powerBean.addPower}" value="Add Power"></h:commandButton>
-	</h:form>
+```XHTML
+<h:form>
+    <table>
+        <tr>
+            <td>Name:</td>
+            <td><h:inputText value="#{powerBean.powerName}"></h:inputText></td>
+        </tr>
+        <tr>
+            <td>Description:</td>
+            <td><h:inputText value="#{powerBean.powerDescription}"></h:inputText></td>
+        </tr>
+    </table>
+    
+    <h:commandButton action="#{powerBean.addPower}" value="Add Power"></h:commandButton>
+</h:form>
+```
 
 
 Wenn wir auf der Seite nun den Knopf klicken, wird der entsprechende Eintrag zur Datenbank hinzugefüt, und die Liste wird aktualisiert.
@@ -319,26 +325,28 @@ Wenn wir auf der Seite nun den Knopf klicken, wird der entsprechende Eintrag zur
 
 Folgende Methode einfügen in `PowerLocalServiceImpl`:
 
-	public Power updatePower(long powerId, String name, String description) {
-		Power p = null;
-		try {
-			p = powerPersistence.fetchByPrimaryKey(powerId);
-			if (p != null &&
-				! Strings.isNullOrEmpty(name) &&
-				! Strings.isNullOrEmpty(description)) {
-				
-				p.setPowerName(name);
-				p.setPowerDescription(description);
-				
-				p = powerPersistence.update(p);
-			}
-			
-		} catch (SystemException e) {
-			e.printStackTrace();
-		}
+```Java
+public Power updatePower(long powerId, String name, String description) {
+    Power p = null;
+    try {
+        p = powerPersistence.fetchByPrimaryKey(powerId);
+        if (p != null &&
+            ! Strings.isNullOrEmpty(name) &&
+            ! Strings.isNullOrEmpty(description)) {
+            
+            p.setPowerName(name);
+            p.setPowerDescription(description);
+            
+            p = powerPersistence.update(p);
+        }
 		
-		return p;
-	}
+    } catch (SystemException e) {
+        e.printStackTrace();
+    }
+		
+    return p;
+}
+```
 
 Service-Builde neu durchlaufen lassen. Projekt in Eclipse aktualisieren.
 
@@ -352,70 +360,72 @@ powerID mit Getters und Setters:
 
 Action-Listener editPower:
 
-	public String editPower() {
-		if (! powerId.isEmpty() &&
-			! powerName.isEmpty() &&
-			! powerDescription.isEmpty()) {
-			
-			Power p = PowerLocalServiceUtil.updatePower(Long.parseLong(powerId), powerName, powerDescription);
-			
-			if (p != null){
-				System.out.println(String.format("Power edited: %s", p.getPowerName()));
-			} else {
-				System.err.println(String.format("Power was NOT edited: ", powerName));
-			}
-		}
-		
-		updatePowers();
-		
-		return "";
-	}
+```Java
+public String editPower() {
+    if (! powerId.isEmpty() &&
+        ! powerName.isEmpty() &&
+        ! powerDescription.isEmpty()) {
+        
+        Power p = PowerLocalServiceUtil.updatePower(Long.parseLong(powerId), powerName, powerDescription);
+        
+        if (p != null){
+            System.out.println(String.format("Power edited: %s", p.getPowerName()));
+        } else {
+            System.err.println(String.format("Power was NOT edited: ", powerName));
+        }
+    }
+	
+    updatePowers();
+    
+    return "";
+}
+```
 	
 
 
 ###View erweitern:
 
-	<h:body>
-		<h3>Powers:</h3>
-		<table>
-			<ui:repeat var="power" value="#{powerBean.powers}">
-				<tr>
-					<td>
-						<h:outputText value="#{power.powerId}" />:
-					</td>
-					<td>
-						<h:outputText value="#{power.powerName}" />:
-					</td>
-					<td>
-						<h:outputText value="#{power.powerDescription}" />
-					</td>
-				</tr>
-			</ui:repeat>
-		</table>
+```XHTML
+<h:body>
+    <h3>Powers:</h3>
+    <table>
+        <ui:repeat var="power" value="#{powerBean.powers}">
+            <tr>
+                <td>
+                    <h:outputText value="#{power.powerId}" />:
+                </td>
+                <td>
+		    <h:outputText value="#{power.powerName}" />:
+		</td>
+		<td>
+		    <h:outputText value="#{power.powerDescription}" />
+		</td>
+	    </tr>
+	</ui:repeat>
+    </table>
 		
+    <h:form>
+        <table>
+            <tr>
+                <td>ID:</td>
+                <td><h:inputText value="#{powerBean.powerId}"></h:inputText></td>
+            </tr>
+            <tr>
+                <td>Name:</td>
+                <td><h:inputText value="#{powerBean.powerName}"></h:inputText></td>
+	    </tr>
+	    <tr>
+	        <td>Description:</td>
+	        <td><h:inputText value="#{powerBean.powerDescription}"></h:inputText></td>
+	    </tr>
+	</table>
+	
+	<h:commandButton action="#{powerBean.addPower}" value="Add Power"></h:commandButton>
+	<h:commandButton action="#{powerBean.editPower}" value="Edit Power"></h:commandButton>
+    </h:form>
 		
-		<h:form>
-			<table>
-				<tr>
-					<td>ID:</td>
-					<td><h:inputText value="#{powerBean.powerId}"></h:inputText></td>
-				</tr>
-				<tr>
-					<td>Name:</td>
-					<td><h:inputText value="#{powerBean.powerName}"></h:inputText></td>
-				</tr>
-				<tr>
-					<td>Description:</td>
-					<td><h:inputText value="#{powerBean.powerDescription}"></h:inputText></td>
-				</tr>
-			</table>
-			
-			<h:commandButton action="#{powerBean.addPower}" value="Add Power"></h:commandButton>
-			<h:commandButton action="#{powerBean.editPower}" value="Edit Power"></h:commandButton>
-		</h:form>
-		
-	</h:body>
-
+</h:body>
+```
 
 Nun können wir Einträge bearbeiten
 
