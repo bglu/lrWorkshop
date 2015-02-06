@@ -181,9 +181,9 @@ public class PowerBean {
 	
     private void updatePowers () {
         try {
-	    powers = PowerLocalServiceUtil.getPowers(QueryUtil.ALL_POS, QueryUtil.ALL_POS);
-	} catch (SystemException e) {
-	    e.printStackTrace();
+            powers = PowerLocalServiceUtil.getPowers(QueryUtil.ALL_POS, QueryUtil.ALL_POS);
+        } catch (SystemException e) {
+            e.printStackTrace();
         }
     }
 	
