@@ -1,5 +1,9 @@
 #HeroDB-Portlet
 
+Wir wollen nun ein *Data-Driven-Portlet* implementieren, d.h. ein Portlet, welches mit Daten aus der Datenbank arbeitet. Insbesondere interessieren wir uns für die typischen **C**reate|**R**ead|**U**pdate|**D**elete Operationen.
+
+Dazu erstellen wir ein Portlet, womit wir als Superhelden unsere Superkräfte speichern können.
+
 ##Neues Plugin Project anlegen
 
 - Project name: herodb-portlet
@@ -18,10 +22,21 @@ In der `pom.xml` das Profile mit folgenden Zeilen aktivieren:
 Dependencies:
 
     <dependency>
-		<groupId>com.google.guava</groupId>
-		<artifactId>guava</artifactId>
-		<version>18.0</version>
-	</dependency>
+	<groupId>com.google.guava</groupId>
+	<artifactId>guava</artifactId>
+	<version>18.0</version>
+    </dependency>
+    
+>Wir binden an dieser Stelle [Google Guava](https://code.google.com/p/guava-libraries/) ein. Dies ist eine Hilfsbibliothek, die Java um einige Funktionaliäten erweitert, sodaß wir besser lesbaren Code schreiben können. So können wir statt:
+>
+>       String s = ....;
+>       if (s != null && ! s.empty())
+>	
+>schreiben:
+>
+>       if (! Strings.isNullOrEmpty(s))
+
+	
 
 Testen, ob portlet mit Maven gebaut werden kann. Dazu Konsole im Hauptverzeichnis des Portlets öffnen (`C:\liferay\workspace\herodb-portlet`), und folgenden Befehl absenden:
 
