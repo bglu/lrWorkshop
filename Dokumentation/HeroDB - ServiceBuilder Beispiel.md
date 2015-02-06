@@ -23,7 +23,7 @@ Dependencies:
 		<version>18.0</version>
 	</dependency>
 
-Testen, ob portlet mit Maven gebaut werden kann. Dazu Konsole im Hauptverzeichnis des Portlets öffnen (`C:\liferay\workspace\herodb-portlet`, und folgenden Befehl absenden:
+Testen, ob portlet mit Maven gebaut werden kann. Dazu Konsole im Hauptverzeichnis des Portlets öffnen (`C:\liferay\workspace\herodb-portlet`), und folgenden Befehl absenden:
 
     mvn package
 
@@ -40,7 +40,7 @@ Hier sollte es zu einer Meldung kommen:
 
 Um mit der Datenbank zu Arbeiten, stellt Lifeay den sogenannten `Service-Builder` zur Verfügung. Dieser stellt sicher, dass alle Portlets einheitlich auf die Datenbank des Portals zugreifen.
 
-**Achtung:** Es wird dringend davon ageraten, selber *etwa per SQL* auf der Datenbank zu arbeiten. Liferay behählt einen Cache der Daten vor. Im schlimmsten Fall kann bei Abweichungen zu inkonsistenten Daten kommen.
+**Achtung:** Es wird dringend davon ageraten, selber *etwa per SQL* auf der Datenbank zu arbeiten. Liferay behählt einen Cache der Daten vor. Im schlimmsten Fall kann es bei Abweichungen zu inkonsistenten Daten kommen.
 
 Für uns als Entwickler bedeutet dies, dass wir alle Datenbank-Aufgaben mit dem Service-Builder realisieren können und müssen.
 
@@ -55,6 +55,9 @@ Hier auf den Eintrag `Service-Builder` klicken, worauf hin im rechten Bereich ei
 
 - Package path: de.lineas.training.herodb
 - Namespace: hero
+
+![Service Builder - Package path und Namespace](https://github.com/bglu/lrWorkshop/blob/master/Dokumentation/img/herodb_sb01.PNG)  
+
 
 Der *Package path* legt den Packetnamen fest, unter dem die später erzeugten Dateien abgelegt werden. Der *Namespace* dient als Präfix für die Tabellennamen, um Namenskonflikte mit anderen Portlets zu vermeiden.
 
@@ -96,7 +99,7 @@ Um anhand dieser XML-Dateien nun die entsprechenden Service-Klassen zu generiere
 
     mvn liferay:build-service
 
-Hier hier sollte Maven ein Build-Success melden.
+Auch hier sollte Maven ein Build-Success melden.
 
 Wenn wir nun in der Eclipse das Projekt aktualisieren, sehen wir, dass einige Pakete und Klassen generiert wurden. Mit diesen Klassen können wir die Einträge in der *Power* Tabelle:
 
@@ -105,13 +108,13 @@ Wenn wir nun in der Eclipse das Projekt aktualisieren, sehen wir, dass einige Pa
     - bearbeiten
     - löschen
 
-Dazu jedoch später mehr. Zuerst sollten wir das Portlet einmal deployen. Wir sollten im Log ein Eintrag wie folgt zu finden sein:
+Dazu jedoch später mehr. Zuerst sollten wir das Portlet einmal deployen. Wir sollten im Log ein Eintrag wie folgt finden:
 
     11:39:02,018 INFO  [localhost-startStop-2][ServiceComponentLocalServiceImpl:313] Running hero SQL scripts
 
 Dieser wird die Tabelle in der Datenbank anlegen. *FYI:* Die Scripte, von dennen hier gespochen wird, wurden vom Service-Builder in folgendem Ordner geschrieben: `/herodb-portlet/src/main/webapp/WEB-INF/sql`
 
-Wenn wir die Datenbank nun in SQuirrelSQL betrachten, finden wir eine neue Tabelle: `Hero_POWER`
+Wenn wir die Datenbank nun in SQuirrelSQL betrachten, finden wir eine neue Tabelle: `HERO_POWER`
 
 
 
@@ -120,12 +123,13 @@ Wenn wir die Datenbank nun in SQuirrelSQL betrachten, finden wir eine neue Tabel
 
 Um unsere Anwendung besser schreiben zu können, sollten wir an dieser Stelle *von Hand* Testdaten in die Tabelle schreiben. **Achtung:** Ich habe vorher gesagt, dass wir dies nicht tun sollten. Dies soll nur als Demo dienen.
 
-Wir öffnen also die Tabelle in SQuirrelSQL und Klicken mit der rechten Maustatse auf eine der Spalten. Im Kontextmenü können wir nun mit `make editable` die Tabelle editierbar machen. Nun können wir mit einem weiteren Rechtsklick auf eine der Spalte den Eintrag `insert row` wählen.
+Wir öffnen also die Tabelle in SQuirrelSQL und klicken mit der rechten Maustatse auf eine der Spalten. Im Kontextmenü können wir nun mit `make editable` die Tabelle editierbar machen. Nun können wir mit einem weiteren Rechtsklick auf eine der Spalte den Eintrag `insert row` wählen.
 
 Hier erstellen wir folgende Zeile:
+
 	- powerId: 0
 	- powerName: Clean Code
-	- powerDescription: Wielder can writer code cleaner than Mr. Proper.
+	- powerDescription: Wielder can write code cleaner than Mr. Proper.
 
 
 
@@ -185,6 +189,8 @@ Den Body-Teil in der `/herodb-portlet/src/main/webapp/views/view.xhtml` ersetzen
 
 
 Das Portlet sollte nun eine Liste mit einem Eintrag anzeigen.
+
+![Screenshot Portlet zeigt Datensatz](https://github.com/bglu/lrWorkshop/blob/master/Dokumentation/img/herodb_portlet01.PNG) 
 
 Somit können wir Datensätze aus der Datenbank lesen und anzeigen.
 
