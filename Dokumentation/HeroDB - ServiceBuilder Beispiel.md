@@ -130,10 +130,10 @@ Auch hier sollte Maven ein Build-Success melden.
 
 Wenn wir nun in der Eclipse das Projekt aktualisieren, sehen wir, dass einige Pakete und Klassen generiert wurden. Mit diesen Klassen können wir die Einträge in der *Power* Tabelle:
 
-    - lesen / auflisten
-    - erstellen
-    - bearbeiten
-    - löschen
+- lesen / auflisten
+- erstellen
+- bearbeiten
+- löschen
 
 Dazu jedoch später mehr. Zuerst sollten wir das Portlet einmal deployen. Wir sollten im Log ein Eintrag wie folgt finden:
 
@@ -502,7 +502,7 @@ Als Konzernstandard wurde *IceFaces* gewählt.
 
 Damit wir unsere bisherige View später nocheinmal betrachten können, sichern wie sie. Dazu kopieren wir die Datei `herodb-portlet/src/main/webapp/views/view.xhtml` als `herodb-portlet/src/main/webapp/views/view2.xhtml`.
 
-In der `view2.xhtml` entfernen wir die obere Tabelle. Stattdessen fügen wir folgende *DataTable* von IceFaces ein:
+In der `view2.xhtml` entfernen wir die obere Tabelle. Stattdessen fügen wir folgende [DataTable](http://icefaces-showcase.icesoft.org/showcase.jsf?grp=aceMenu&exp=dataTableSelector) von IceFaces ein:
 
 ```XHTML
 <ace:dataTable
