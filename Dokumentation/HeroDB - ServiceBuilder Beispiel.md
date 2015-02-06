@@ -202,17 +202,19 @@ public class PowerBean {
 
 Den Body-Teil in der `/herodb-portlet/src/main/webapp/views/view.xhtml` ersetzen:
 
-    <h:body>
-		<h3>Powers:</h3>
-		<ul>
-			<ui:repeat var="power" value="#{powerBean.powers}">
-				<li>
-					<h:outputText value="#{power.powerName}" />:
-					<h:outputText value="#{power.powerDescription}" />
-				</li>
-			</ui:repeat>
-		</ul>
-	</h:body>
+```XHTML
+<h:body>
+    <h3>Powers:</h3>
+    <ul>
+        <ui:repeat var="power" value="#{powerBean.powers}">
+            <li>
+                <h:outputText value="#{power.powerName}" />:
+                <h:outputText value="#{power.powerDescription}" />
+            </li>
+        </ui:repeat>
+    </ul>
+</h:body>
+```
 
 
 Das Portlet sollte nun eine Liste mit einem Eintrag anzeigen.
@@ -234,30 +236,28 @@ Stattdessen erweitern wir den Service um eine Methode, die nur noch die beiden S
 
 Dazu schreiben wir folggende Methode in die `/herodb-portlet/src/main/java/de/lineas/training/herodb/service/impl/PowerLocalServiceImpl.java`:
 
-	public Power addPower(String name, String description) {
-			Power p = new PowerClp();
-			
-			if (! Strings.isNullOrEmpty(name) && ! Strings.isNullOrEmpty(description)) {
-				try {
-					long powerId = counterLocalService.increment();
-					p = powerPersistence.create(powerId);
-					
-					if (p != null) {
-						p.setPowerName(name);
-						p.setPowerDescription(description);
-						
-						p = powerPersistence.update(p);
-					}
-					systemException e) {
-					e.printStackTrace();
-				}
-				
-			}
-			
-			return p;
-		}
-	}
-
+```Java
+public Power addPower(String name, String description) {
+    Power p = new PowerClp();
+    
+    if (! Strings.isNullOrEmpty(name) && ! Strings.isNullOrEmpty(description)) {
+        try {
+            long powerId = counterLocalService.increment();
+            p = powerPersistence.create(powerId);
+            
+            if (p != null) {
+                p.setPowerName(name);
+                p.setPowerDescription(description);
+                p = powerPersistence.update(p);
+            }
+        } catch (SystemException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    return p;
+}
+```
 
 Nun müssen wir den Service-Builder erneut durchlaufen lassen, damit diese Methode auch in die `PowerLocalServiceUtil` geschrieben wird.
 
