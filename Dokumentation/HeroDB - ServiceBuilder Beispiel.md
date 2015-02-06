@@ -393,11 +393,9 @@ public String editPower() {
             <tr>
                 <td>
                     <h:outputText value="#{power.powerId}"/>
-                    :
                 </td>
                 <td>
                     <h:outputText value="#{power.powerName}"/>
-                    :
                 </td>
                 <td>
                     <h:outputText value="#{power.powerDescription}"/>
@@ -444,37 +442,38 @@ Nun können wir Einträge bearbeiten
 
 ###Controller erweitern
 
-	public String deltePower() {
-		if (! powerId.isEmpty() ) {
-			
-			Power p = null;
-			try {
-				p = PowerLocalServiceUtil.deletePower(Long.parseLong(powerId));
-			} catch (NumberFormatException e) {
-				e.printStackTrace();
-			} catch (PortalException e) {
-				e.printStackTrace();
-			} catch (SystemException e) {
-				e.printStackTrace();
-			}
-			
-			if (p != null){
-				System.out.println(String.format("Power deleted: %s", p.getPowerName()));
-			} else {
-				System.err.println(String.format("Power was NOT deleted: ", powerName));
-			}
-		}
-		
-		updatePowers();
-		
-		return "";
-	}
-	
+```Java
+public String deltePower() {
+    if (!powerId.isEmpty()) {
+        Power p = null;
+        try {
+            p = PowerLocalServiceUtil.deletePower(Long.parseLong(powerId));
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        } catch (PortalException e) {
+            e.printStackTrace();
+        } catch (SystemException e) {
+            e.printStackTrace();
+        }
 
+        if (p != null) {
+            System.out.println(String.format("Power deleted: %s", p.getPowerName()));
+        } else {
+            System.err.println(String.format("Power was NOT deleted: ", powerName));
+        }
+    }
+
+    updatePowers();
+
+    return "";
+}
+	
+```
 ##View erweitern
 
+```XHTML
     <h:commandButton action="#{powerBean.deletePower}" value="Delete Power"></h:commandButton>
-
+```
 
 
 Nun haben wir ein Portlet mit den vier Standard Datenbankoperationen:
@@ -505,28 +504,30 @@ Damit wir unsere bisherige View später nocheinmal betrachten können, sichern w
 
 In der `view2.xhtml` entfernen wir die obere Tabelle. Stattdessen fügen wir folgende *DataTable* von IceFaces ein:
 
-	<ace:dataTable
-				id="powerTable"
-				value="#{powerBean.powers}"
-				var="power"
-				selectionMode="single"	
-			>
-						
-			<ace:column id="name">
-				<f:facet name="header">
-					Name
-				</f:facet>
-				<h:outputText value="#{power.powerName}"></h:outputText>
-			</ace:column>
-			
-			<ace:column id="description">
-				<f:facet name="header">
-					Beschreibung
-				</f:facet>
-				<h:outputText value="#{power.powerDescription}"></h:outputText>
-			</ace:column>
-		
-	</ace:dataTable>
+```XHTML
+<ace:dataTable
+    id="powerTable"
+    value="#{powerBean.powers}"
+    var="power"
+    selectionMode="single"
+    >
+
+    <ace:column id="name">
+        <f:facet name="header">
+            Name
+        </f:facet>
+        <h:outputText value="#{power.powerName}"></h:outputText>
+    </ace:column>
+
+    <ace:column id="description">
+        <f:facet name="header">
+            Beschreibung
+        </f:facet>
+        <h:outputText value="#{power.powerDescription}"></h:outputText>
+    </ace:column>
+
+</ace:dataTable>
+```
 
 
 **Erläuterung:** Die DataTable erhält eine eindeutige Id namens "powerId". Als *Value* übergeben wir unsere Liste mit den Power-Einträgen. Mit *var* definieren wir eine Laufvariable, mit der wir auf die Einzelnen Einträge der Liste zugreifen können.
@@ -545,85 +546,94 @@ Wir könnnen nun Zeilen in der Tabelle markieren. Allerdings geschied bei der Au
 
 Zuerste erstellen wir eine neue Property, mit der wir uns die ausgewählte Spalte merken (mit Getter und Setter):
 
-    private Power selectedPower;
+```Java
+private Power selectedPower;
+```
 
 Nun schreiben wir einen SelectListener, welche die Property bei Auswahl entsprechend setzt:
-    
-    public void selectListener(SelectEvent e) {
-    	selectedPower = (Power) e.getObject();
-    		
-    	if (selectedPower != null) {
-    		//set form fields
-    		setPowerName(selectedPower.getPowerName());
-    		setPowerDescription(selectedPower.getPowerDescription());
-    		setPowerId(String.valueOf(selectedPower.getPowerId()));
-    	}
 
+```Java
+public void selectListener(SelectEvent e) {
+    selectedPower = (Power) e.getObject();
+    		
+    if (selectedPower != null) {
+        //set form fields
+    	setPowerName(selectedPower.getPowerName());
+    	setPowerDescription(selectedPower.getPowerDescription());
+    	setPowerId(String.valueOf(selectedPower.getPowerId()));
     }
-    
+
+}
+```
 
 Als letztes müssen wir in der View noch der DataTable sagen, welcher Listener bei Zeielenauswahl aufzurufen ist. Dazu fügen wir folgendes Attribut zur DataTable hinzu:
     
-    rowSelectListener="#{powerBean.selectListener}"
+```XHTML
+rowSelectListener="#{powerBean.selectListener}"
+```
 	
 Die Definition sieht also wie folgt aus:
 
-    <ace:dataTable
-		id="powerTable"
-		value="#{powerBean.powers}"
-		var="power"
-		selectionMode="single"	
-	    rowSelectListener="#{powerBean.selectListener}"
-	>
-
+```XHTML
+<ace:dataTable
+    id="powerTable"
+    value="#{powerBean.powers}"
+    var="power"
+    selectionMode="single"	
+    rowSelectListener="#{powerBean.selectListener}"
+>
+````
 
 Wenn wir jetzt redeployen, und die Seite neu betrachten, sehen wir, dass sich die Formularfelder bei Auswahl einer Zeile entsprechend ändern. Wir können nun Einträge bequem bearbeiten und löschen.
 
 Wir sollten jedoch noch einen *Unselect-Listener* implementieren, welcher die Auswahl aufhebt. Dazu erweitern wir unsere Bean um die folgende Funktion:
 
-    //Bitte auf das Unselect (statt Select) Event achten!
-    public void unselectListener(UnselectEvent e) { 
-    	//reset selected power
-		selectedPower = null;
+```Java
+//Bitte auf das Unselect (statt Select) Event achten!
+public void unselectListener(UnselectEvent e) { 
+    //reset selected power
+    selectedPower = null;
 
-		//reset form fields
-		setPowerName("");
-		setPowerDescription("");
-		setPowerId("");
-	}
-
+    //reset form fields
+    setPowerName("");
+    setPowerDescription("");
+    setPowerId("");
+}
+```
 
 Auch hier müssen wir der DataTable sagen, dass sie diesen Listener bei Zeilenabwahl aufrufen soll. Dazu fügen wir diese Attribut hinzu:
 
-	rowUnselectListener="#{powerBean.unselectListener}"
-
+```XHTML
+rowUnselectListener="#{powerBean.unselectListener}"
+```
 
 Die DataTable sieht im Ganzen also so aus:
- 	
-    <h:form>
-    	<ace:dataTable
-    		id="powerTable"
-    		value="#{powerBean.powers}"
-    		var="power"
-    		selectionMode="single"
-    		rowSelectListener="#{powerBean.selectListener}"
-    		rowUnselectListener="#{powerBean.unselectListener}"
-    	>
-    				
-    		<ace:column id="name">
-    			<f:facet name="header">
-    				Name
-    			</f:facet>
-    			<h:outputText value="#{power.powerName}"></h:outputText>
-    		</ace:column>
-    		
-    		<ace:column id="description">
-    			<f:facet name="header">
-    				Beschreibung
-    			</f:facet>
-    			<h:outputText value="#{power.powerDescription}"></h:outputText>
-    		</ace:column>
 
-    	</ace:dataTable>
+```XHTML	
+<h:form>
+<ace:dataTable
+    id="powerTable"
+    value="#{powerBean.powers}"
+    var="power"
+    selectionMode="single"
+    rowSelectListener="#{powerBean.selectListener}"
+    rowUnselectListener="#{powerBean.unselectListener}"
+>
+    				
+    <ace:column id="name">
+        <f:facet name="header">
+    	    Name
+    	</f:facet>
+    	<h:outputText value="#{power.powerName}"></h:outputText>
+    </ace:column>
+    		
+    <ace:column id="description">
+        <f:facet name="header">
+    	    Beschreibung
+    	</f:facet>
+    	    <h:outputText value="#{power.powerDescription}"></h:outputText>
+    	</ace:column>
+
+</ace:dataTable>
 
 
