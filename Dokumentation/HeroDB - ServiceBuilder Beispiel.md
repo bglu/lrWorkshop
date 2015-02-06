@@ -86,11 +86,13 @@ Der *Package path* legt den Packetnamen fest, unter dem die später erzeugten Da
 
 Wenn wir dies mit Strg+s speichern, schreibt Eclipse folgendes in unsere XML:
 
-    <?xml version="1.0" encoding="UTF-8"?>
-    <!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 6.2.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_6_2_0.dtd">
-    <service-builder package-path="de.lineas.training.herodb">
-        <namespace>hero</namespace>
-    </service-builder>
+```XML
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 6.2.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_6_2_0.dtd">
+<service-builder package-path="de.lineas.training.herodb">
+    <namespace>hero</namespace>
+</service-builder>
+```
 
 Nun estellen wir eine erste Tabelle: *Power*. In dieser sollen verschiedene `Superkräfte` unserer Helden gespeichert werden. Dafür brauchen wir drei Spalten:
 
@@ -100,15 +102,17 @@ Nun estellen wir eine erste Tabelle: *Power*. In dieser sollen verschiedene `Sup
 
 Um diese Tabelle im Service-Builder anzulegen, fügen wir unserer `service.xml` folgenden Abschnitt hinzu:
 
-    <entity name="Power" local-service="true" remote-service="false">
-    	<!-- the primary key -->
-    	<column name="PowerId" type="long" primary="true"></column>
+```XML
+<entity name="Power" local-service="true" remote-service="false">
+    <!-- the primary key -->
+    <column name="PowerId" type="long" primary="true"></column>
 
-		<!-- name of the super power -->
-        <column name="PowerName" type="String"></column>
-        <!-- short description of the super power -->
-        <column name="PowerDescription" type="String"></column>
-    </entity>
+    <!-- name of the super power -->
+    <column name="PowerName" type="String"></column>
+    <!-- short description of the super power -->
+    <column name="PowerDescription" type="String"></column>
+</entity>
+```
 
 Im *entity* Tag wir eine eine Entität (sprich Tabelle) definiert. Für diese tabelle wollen wir einen *lokalen service* haben; d.h. wir wollen mit unserem Portlet darauf zugreifen wollen. *Remote service* ist deaktiviert, weil wir nicht von außerhalb auf diese Tabellen zugreifen möchten. Andernfalls würde der Service-Builder auch einen SOAP Webservice generieren.
 
@@ -162,35 +166,35 @@ Hier erstellen wir folgende Zeile:
 
 Neue Klasse erstellen: `de.lineas.training.herodb.beans.PowerBean.java`
 
-    @ManagedBean
-    @SessionScoped
-    public class PowerBean {
+```Java
+@ManagedBean
+@SessionScoped
+public class PowerBean {
 
-	    private List<Power> powers = new ArrayList<Power>();
+    private List<Power> powers = new ArrayList<Power>();
 	
-	    public PowerBean () {
-		    updatePowers();
-	    }
-	
-	
-	    //--- Helpers
-	
-	    private void updatePowers () {
-		    try {
-			    powers = PowerLocalServiceUtil.getPowers(QueryUtil.ALL_POS, QueryUtil.ALL_POS);
-		    } catch (SystemException e) {
-			    e.printStackTrace();
-		    }
-	    }
-	
-	    //--- Getters and Setters
-
-	    public List<Power> getPowers() {
-		    return powers;
-	    }
-	
+    public PowerBean () {
+        updatePowers();
     }
 
+     //--- Helpers
+	
+    private void updatePowers () {
+        try {
+	    powers = PowerLocalServiceUtil.getPowers(QueryUtil.ALL_POS, QueryUtil.ALL_POS);
+	} catch (SystemException e) {
+	    e.printStackTrace();
+        }
+    }
+	
+    //--- Getters and Setters
+
+    public List<Power> getPowers() {
+        return powers;
+    }
+	
+}
+```
 
 
 
