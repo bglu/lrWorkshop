@@ -2,7 +2,7 @@
 
 Als Einstieg programmieren wir ein *Hello-World* Portlet. Dieses soll jedoch etwas mehr machen, als nur den statischen Text anzuzeigen. Stattdessen bauen wir ein Anbindung an den [Cleverbot](http://www.cleverbot.com/).
 
-![Screenshot Cleverbot Webseite](https://github.com/bglu/lrWorkshop/blob/master/Dokumentation/img/cleverbotPortlet01.PNG)]
+![Screenshot Cleverbot Webseite](https://github.com/bglu/lrWorkshop/blob/master/Dokumentation/img/cleverbotPortlet01.PNG)
 
 Unser Portlet wird also folgenden Inhalt haben:
 
@@ -26,11 +26,11 @@ Wir öffnen Eclipse und wählen wählen *File* -> *New Liferay Plugin Project*. 
 
 Das Feld *Active profiles* ist noch leer. Aber rechts neben dem Feld gibt es zwei Schaltflächen. Wir klicken auf die Schaltfläche ganz rechts: *Create new Maven profile based on Liferay runtime....*.
 
-![Screenshot New Project Wizzard](https://github.com/bglu/lrWorkshop/blob/master/Dokumentation/img/cleverbotPortlet02.PNG)]
+![Screenshot New Project Wizzard](https://github.com/bglu/lrWorkshop/blob/master/Dokumentation/img/cleverbotPortlet02.PNG)
 
 Hier wählen wir als *Liferay Version* die Version *6.2.1* und lassen als *profile location* die *Project pom.xml*. Mit OK können wir den Dialog wieder schließen.
 
-![Screenshot New Maven Profile](https://github.com/bglu/lrWorkshop/blob/master/Dokumentation/img/cleverbotPortlet02.PNG)]
+![Screenshot New Maven Profile](https://github.com/bglu/lrWorkshop/blob/master/Dokumentation/img/cleverbotPortlet02.PNG)
 
 Nun gehen wir im Wizzard mit *Next>* weiter.
 
@@ -43,7 +43,7 @@ Hier sollten wir ein *Portlet framework* wählen. Liferay unterstüzt mehrere Fr
   - LiferayFaces
 - Vaadin
 
-![Screenshot Portlet Frameworks](https://github.com/bglu/lrWorkshop/blob/master/Dokumentation/img/cleverbotPortlet04.PNG)]
+![Screenshot Portlet Frameworks](https://github.com/bglu/lrWorkshop/blob/master/Dokumentation/img/cleverbotPortlet04.PNG)
 
 Wir werden konzernbedingt am häufigsten mit JSF IceFaces arbeiten. Für dieses erste Beispiel lassen wir jedoch *Liferay MVC* ausgewählt und klicken auf *Finish*.
 
@@ -87,7 +87,7 @@ Wenn wir die Datei nun Speichern (Strg + S), und mit der rechten Maustaste auf d
 - *chatter-bot-api-1.3.2.jar*.
 - *junit.4.4.jar*
 
-![Screenshot Maven Dependencies](https://github.com/bglu/lrWorkshop/blob/master/Dokumentation/img/cleverbotPortlet05.PNG)]
+![Screenshot Maven Dependencies](https://github.com/bglu/lrWorkshop/blob/master/Dokumentation/img/cleverbotPortlet05.PNG)
 
 > Sollte dies noch nicht der Fall sein, kann man versuchen, die Maven-Dependencies zu aktualisieren. Dazu einmal mit Rechtsklick auf das Projekt klicken. Im Kontext-Menü den Eintrag: *Maven* > *Update Project...* wählen.
 > Bringt auch dies keine Besserung, sollte man versuchen, dass Projekt von der Konsole aus zu bauen. Dazu einfach eine Windows Konsole im Projektpfad (C:\liferay\workspace\cleverbot-portlet\) öffnen und folgenden Befehl absetzten:
@@ -110,7 +110,7 @@ Dabei besteht jedes Gespräch aus mehreren *Lines*: Was hat der Benutzer gesagt,
 - Package: de.lineas.training.cleverbot.model
 - Name: ChatLine
 
-![Screenshot Maven Dependencies](https://github.com/bglu/lrWorkshop/blob/master/Dokumentation/img/cleverbotPortlet06.PNG)]
+![Screenshot Maven Dependencies](https://github.com/bglu/lrWorkshop/blob/master/Dokumentation/img/cleverbotPortlet06.PNG)
 
 Mit *Finish* schließen wir den Dialog. Dann füllen wir die Klasse wie folgt:
 
@@ -165,11 +165,11 @@ Diese werden im Constructor gesetzt. Zuzätzlich wird die *toString* Methode üb
 
 Um sicher zu stellen, dass unsere Klasse *ChatLine* auch richtig funktioniert, sollten wir eine Testklasse schreiben. Vorher müssen wir jedoch unter dem Ordner `src` noch einen neuen Ordner `test` erstellen.
 
-![Screenshot Maven Dependencies](https://github.com/bglu/lrWorkshop/blob/master/Dokumentation/img/cleverbotPortlet08.PNG)]
+![Screenshot Maven Dependencies](https://github.com/bglu/lrWorkshop/blob/master/Dokumentation/img/cleverbotPortlet08.PNG)
 
 In diesen `test` Ordner erstellen wir einen neuen Ordner `java`. Die Eclipse erkennt nun, dass es sich dabei um einen Source-Folder handelt, und zeigt ihn nun im Baum weit oben an:
 
-![Screenshot Maven Dependencies](https://github.com/bglu/lrWorkshop/blob/master/Dokumentation/img/cleverbotPortlet09.PNG)]
+![Screenshot Maven Dependencies](https://github.com/bglu/lrWorkshop/blob/master/Dokumentation/img/cleverbotPortlet09.PNG)
 
 
 Nun öffnen wir mit dem Tastenkürzel Strg + N ein Dialog zum Erstellen. Im Baum wählen wir *Java* > *JUnit* > *JUnit Test Case* und klicken auf *Next>*.
@@ -183,12 +183,12 @@ Hier wählen wir:
     -setUp
 -Class under test: de.lineas.training.cleverbot.model.ChatLine
 
-![Screenshot Maven Dependencies](https://github.com/bglu/lrWorkshop/blob/master/Dokumentation/img/cleverbotPortlet10.PNG)]
+![Screenshot Maven Dependencies](https://github.com/bglu/lrWorkshop/blob/master/Dokumentation/img/cleverbotPortlet10.PNG)
 
 
 Mit *Next>* gelangen wir zum nächsten Schritt. Hier können wir auswählen, zu welchen Methoden wir tests schreiben wollen. Da es sich bei den anderen Methoden lediglich um Getter handelt, wählen wir nur die *toString()* Methode aus.
 
-![Screenshot Maven Dependencies](https://github.com/bglu/lrWorkshop/blob/master/Dokumentation/img/cleverbotPortlet11.PNG)]
+![Screenshot Maven Dependencies](https://github.com/bglu/lrWorkshop/blob/master/Dokumentation/img/cleverbotPortlet11.PNG)
 
 Nun können wir den Wizzard mit *Finish* abschließen.
 
