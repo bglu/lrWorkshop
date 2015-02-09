@@ -36,12 +36,12 @@ Nun gehen wir im Wizzard mit *Next>* weiter.
 
 Hier sollten wir ein *Portlet framework* wählen. Liferay unterstüzt mehrere Frameworks. So können wir wählen zwischen:
 
--Liferay MVC
--JSF
-    -IceFaces
-    -PrimeFaces
-    -LiferayFaces
--Vaadin
+- Liferay MVC
+- JSF
+  - IceFaces
+  - PrimeFaces
+  - LiferayFaces
+- Vaadin
 
 ![Screenshot Portlet Frameworks](https://github.com/bglu/lrWorkshop/blob/master/Dokumentation/img/cleverbotPortlet04.PNG)]
 
@@ -151,12 +151,12 @@ public class ChatLine {
 
 Die Klasse hält zwei Strings:
 
--speaker
--line
+- speaker
+- line
 
 Diese werden im Constructor gesetzt. Zuzätzlich wird die *toString* Methode überschrieben, sodass der speaker mit dem html-tag *span* umschloßen wird. Die Klasse dieses spans wird abhängig vom Sprecher gesetzt. Dies soll später einfach den Text rot darstellen, wenn der Sprecher der CleverBot ist, und blau, wenn es der Benutzer war.
 
-*BTW:* Es handelt sich hierbar sogar um eine Klasse, welche [Immutable](http://www.javapractices.com/topic/TopicAction.do?Id=29) ist. Das bedeutet, dass sich ihr Status zur Laufzeit niemals ändern kann. Immutable Objects werden allgemein als gutes Design betrachtet, weil sie einfacher zu debuggen sind.
+> *BTW:* Es handelt sich hierbar sogar um eine Klasse, welche [Immutable](http://www.javapractices.com/topic/TopicAction.do?Id=29) ist. Das bedeutet, dass sich ihr Status zur Laufzeit niemals ändern kann. Immutable Objects werden allgemein als gutes Design betrachtet, weil sie einfacher zu debuggen sind.
 
 
 
