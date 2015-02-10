@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="de.lineas.training.publisher.model.Entry">
+		<field name="uuid" type="String" />
+		<field name="entryId" type="long" />
+		<field name="txt" type="String" />
+		<field name="groupId" type="long" />
+	</model>
+</model-hints>

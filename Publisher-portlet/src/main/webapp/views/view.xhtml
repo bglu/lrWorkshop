@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+
+<f:view
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:icecore="http://www.icefaces.org/icefaces/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+>
+	<h:head />
+	<h:body>
+
+		<!-- VIEW MODE -->
+		<h:panelGrid rendered="#{!entryBean.editMode}">
+			<div style="height: 200px; overflow-y: auto">
+				<h:outputText value="#{entryBean.entry.txt}"></h:outputText>
+			</div>
+			<h:form>
+				<h:commandButton action="#{entryBean.handleEdit}" value="Edit"></h:commandButton>
+				<h:commandButton action="#{entryBean.handlePublish}" value="Publish"></h:commandButton>
+			</h:form>
+		</h:panelGrid>
+		
+		
+		<!-- Edit MODE -->
+		<h:panelGrid rendered="#{entryBean.editMode}">
+			<h:form>
+				<h:inputTextarea value="#{entryBean.entry.txt}"></h:inputTextarea>
+				<br/>
+				<h:commandButton action="#{entryBean.handleSave}" value="Save"></h:commandButton>
+				<h:commandButton action="#{entryBean.handleCancel}" value="Cancel"></h:commandButton>
+			</h:form>
+		</h:panelGrid>
+		
+		<p>
+			<h:outputText value="#{entryBean.entries}" />
+		</p>
+	</h:body>
+</f:view>
