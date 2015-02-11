@@ -256,6 +256,68 @@ public void testToStringBot() {
 
 Wenn wir diese Tests nun durchlaufen lassen mit: *Menü* > *Run* > *Run As* > *JUnit Test*, sollten beide Tests erfolgreich durchlaufen. Somit arbeitet unsere *ChatLine* Klasse genauso, wie wir es erwarten.
 
+![Screenshot Junit alles grün](https://github.com/bglu/lrWorkshop/blob/master/Dokumentation/img/cleverbotPortlet12.PNG)]
+
+
+
+
+##View Bauen
+
+Nun bauen wir eine View, welche im Portlet angezeigt werden soll. Diese befindet sich unter: `CleverBot-portlet/src/main/webapp/view.jsp`.
+
+Als erstes importieren wir die *Taglib* [AlloyUI](http://www.liferay.com/de/community/wiki/-/wiki/Main/Alloy+UI). Duzu fügen wir ganz open die folgende Zeile hinzu:
+
+```JSP
+<%@ taglib uri="http://alloy.liferay.com/tld/aui" prefix="aui" %>
+```
+
+Somit können wir auf alle Tags mit dem prefix `aui` zugreife, z.B. `<aui:form>`.
+
+Nun erstellen wir eine *ActionURL*. Dies wird unsere Verbindung zu unserem Controller (den wir noch nicht implementiert haben). Wir können hier den Namen einer Methode in unserem zukünftigen Kontroller definieren, die wir dann als *form action* aufrufen können.
+
+```JSP
+<portlet:actionURL name="addChatLine" var="addChatLineURL"></portlet:actionURL>
+```
+
+Im Attribut `name` legen wir den Namen der Methode fest, welche im Controller aufgerufen werden soll. Das Atttribut `var` dient als Referenz, mit der wir diese ActionURL später aufrufen.
+
+
+Jetzt fügen wir noch eine Form mit einem Submit Button hinzu, um den Aufruf einer Controoler-Funktion zu testen:
+
+```JSP
+<aui:form action="<%= addChatLineURL %>" name="<portlet:namespace />fm">
+    <aui:button-row>
+        <aui:button type="Submit" value="Senden"></aui:button>
+    </aui:button-row>
+</aui:form>
+```
+
+Der Code sollte recht selbsterklärent sein. In der *Form* wird das Attribut `name` auf den *Portlet Namespace* gesetzt. Dies sorgt dafür, dass der Name auch dann eindeutig ist, wenn das Portlet mehrfach auf der gleichen Seite platziert wird. Im Attribut `acion` geben wir unsere ActionURL von oben an, sodass eben die Methode *addChatLine* beim Klicken auf den Senden Button aufgerufen wird.
+
+![Screenshot unserer View](https://github.com/bglu/lrWorkshop/blob/master/Dokumentation/img/cleverbotPortlet13.PNG)]
+
+
+
+
+##Controller Bauen
+
+Wir brauchen natürlich noch einen Kontroller, in dem wir die Methonde `addChatLine` implementieren. Dazu öffnen wir in der Eclipse mit der Tastenkombination *Strg+N* wieder unseren *New Wizzard*. Dort wählen wir *Class* und klicken auf *Next>*.
+
+![Screenshot new class wizzard](https://github.com/bglu/lrWorkshop/blob/master/Dokumentation/img/cleverbotPortlet14.PNG)]
+
+Hier füllen wir die Felder wie folgt:
+
+- *Package:* de.lineas.training.cleverbot.controller
+- *Name:* CleverBotPortlet
+- *Superclass:* com.liferay.util.bridges.mvc.MVCPortlet
+
+![Screenshot new class wizzard](https://github.com/bglu/lrWorkshop/blob/master/Dokumentation/img/cleverbotPortlet15.PNG)]
+
+Wir klicken auf *Finish* und erhalten unsere gewünschte Klasse.
+
+> *Achtung:* Wir erweitern hier die Oberklasse *MVCPortlet*. Dies ist für LiferayMVC Portlets die Oberklasse für alle Controller. Nähere Informationen dazu findet man [hier](https://www.liferay.com/de/web/meera.success/blog/-/blogs/liferay-mvc-portlet-development-introduction).
+
+In dieser Klasse können wir nun unsere Methode implementieren. Hier soll erstmal nur eine Zeile auf die Konsole geschrieben werden.
 
 
 
@@ -282,26 +344,6 @@ Wenn wir diese Tests nun durchlaufen lassen mit: *Menü* > *Run* > *Run As* > *J
 
 
 
-
-
-###View bauen
-
-1. Aui Taglib einbinden:
-
-        <%@ taglib uri="http://alloy.liferay.com/tld/aui" prefix="aui" %>
-
-
-2. ActionURL erstellen:
-
-        <portlet:actionURL name="addChatLine" var="addChatLineURL"></portlet:actionURL>
-
-3. Form mit einfachem Submit Button:
-
-        <aui:form action="<%= addChatLineURL %>" name="<portlet:namespace />fm">
-            <aui:button-row>
-                <aui:button type="Submit" value="Senden"></aui:button>
-            </aui:button-row>
-        </aui:form>
 
 
 ###Controller bauen
