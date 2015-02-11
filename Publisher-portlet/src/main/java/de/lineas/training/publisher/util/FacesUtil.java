@@ -7,4 +7,6 @@ public interface FacesUtil {
 
 	public ThemeDisplay getThemeDisplay();
 	public Group getGroup();
+	
+	public boolean isStagingGroup();
 }

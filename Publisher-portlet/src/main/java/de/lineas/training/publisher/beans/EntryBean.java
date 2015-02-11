@@ -51,9 +51,8 @@ public class EntryBean {
 		toggleEditMode();
 		return "";
 	}
-	public String handlePublish() {
-		return "";
-	}
+	
+	
 	public String handleSave() {
 		try {
 			entryService.updateEntry(entry);

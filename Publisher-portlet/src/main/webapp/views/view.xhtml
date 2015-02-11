@@ -14,12 +14,11 @@
 
 		<!-- VIEW MODE -->
 		<h:panelGrid rendered="#{!entryBean.editMode}">
-			<div style="height: 200px; overflow-y: auto">
+			<div style="overflow-y: auto">
 				<h:outputText value="#{entryBean.entry.txt}"></h:outputText>
 			</div>
-			<h:form>
+			<h:form rendered="#{facesUtil.stagingGroup}">
 				<h:commandButton action="#{entryBean.handleEdit}" value="Edit"></h:commandButton>
-				<h:commandButton action="#{entryBean.handlePublish}" value="Publish"></h:commandButton>
 			</h:form>
 		</h:panelGrid>
 		

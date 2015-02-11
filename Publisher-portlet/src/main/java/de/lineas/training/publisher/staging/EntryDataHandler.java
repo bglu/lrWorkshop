@@ -12,7 +12,6 @@ import com.liferay.portal.kernel.lar.BasePortletDataHandler;
 import com.liferay.portal.kernel.lar.PortletDataContext;
 
 import de.lineas.training.publisher.model.Entry;
-import de.lineas.training.publisher.model.EntryClp;
 import de.lineas.training.publisher.service.EntryLocalServiceUtil;
 
 
@@ -28,12 +27,14 @@ public class EntryDataHandler extends BasePortletDataHandler {
 		long groupId = portletDataContext.getScopeGroupId();
 		System.out.println("Exporting from group with id: " + groupId);
 		List<Entry> entries = EntryLocalServiceUtil.findByGroupId(groupId);
+		
+		//serialize all entries as JSON
 		JSONArray jsonEntires = JSONFactoryUtil.createJSONArray();
 		
 		for (Entry e : entries) {
 			JSONObject jsonEntry = JSONFactoryUtil.createJSONObject();
-			jsonEntry.put("uuid", e.getUuid());
-			jsonEntry.put("txt", e.getTxt());
+			jsonEntry.put(EntryParams.UUID, e.getUuid());
+			jsonEntry.put(EntryParams.TXT, e.getTxt());
 			
 			jsonEntires.put(jsonEntry);
 		}
@@ -56,11 +57,12 @@ public class EntryDataHandler extends BasePortletDataHandler {
 		
 		JSONArray jsonEntires = JSONFactoryUtil.createJSONArray(data);
 		
+		//deserialize the entries from JSON
 		for (int i=0; i < jsonEntires.length(); i++) {
 			JSONObject jsonEntry = jsonEntires.getJSONObject(i);
 			
-			String uuid =jsonEntry.getString("uuid");
-			String txt = jsonEntry.getString("txt");
+			String uuid =jsonEntry.getString(EntryParams.UUID);
+			String txt = jsonEntry.getString(EntryParams.TXT);
 			
 			//see if entry already exists
 			Entry previous = EntryLocalServiceUtil.fetchEntryByUuidAndGroupId(uuid, groupId);
@@ -87,10 +89,12 @@ public class EntryDataHandler extends BasePortletDataHandler {
 				System.out.println("Entry deleted: " + e.getUuid());
 			}
 		} catch (SystemException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 	}
+	
+	
+	
 
 }

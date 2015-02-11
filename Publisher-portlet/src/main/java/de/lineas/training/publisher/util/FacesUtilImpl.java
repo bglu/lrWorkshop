@@ -49,4 +49,9 @@ public class FacesUtilImpl implements FacesUtil, Serializable{
 		return group;
 	}
 
+	@Override
+	public boolean isStagingGroup() {
+		return getGroup().isStagingGroup();
+	}
+
 }
