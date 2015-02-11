@@ -9,6 +9,7 @@ Um Java-Snippets in JSP Seiten zu vermeiden, bieten sich Taglibs an. Hier beschr
 
 Um unsere Taglib verwenden zu können, müssen wir erst ihre Definition schreiben. Dazu legen wir die Datei `src/main/webapp/web-inf/tld/userTable.tld` an:
 
+```XML
 <taglib>
   <tlib-version>1.0</tlib-version>
   <jsp-version>2.0</jsp-version>
@@ -19,6 +20,7 @@ Um unsere Taglib verwenden zu können, müssen wir erst ihre Definition schreibe
     <body-content>empty</body-content>
   </tag>
 </taglib>
+```
 
 ###Erläuterung
 
@@ -37,7 +39,7 @@ Zuletzt geben wir bei `body-conent` mit *empty* an, dass unser Tag keinen Body v
 
 ##Tag-Klasse implementieren
 
-Wir erstellen nun die Klasse `de.lineas.training.sbtest.taglibs.**UserTableTag**` und geben als Oberklasse `javax.servlet.jsp.tagext.**SimpleTagSupport**` an. Dadurch müssen wir in unserer Klasse nur die Methode `doTag` überschreiben. Als ersten Test können wir dies vie folgt tun:
+Wir erstellen nun die Klasse `de.lineas.training.sbtest.taglibs.UserTableTag` und geben als Oberklasse `javax.servlet.jsp.tagext.SimpleTagSupport` an. Dadurch müssen wir in unserer Klasse nur die Methode `doTag` überschreiben. Als ersten Test können wir dies vie folgt tun:
 
 ```Java
 @Override
@@ -63,7 +65,7 @@ Zum Testen benutzen wir unsere Test einfach einmal in unserer View:
 <lit:UserTable />
 ```
 
-Nach dem Deployen müssten wir somit ein einfaches *Hello World" Beispiel geschaffen haben. Leider ist dies jedoch noch weit von unserem Ziel der Benutzertabelle fern.
+Nach dem Deployen müssten wir somit ein einfaches "Hello World" Beispiel geschaffen haben. Leider ist dies jedoch noch weit von unserem Ziel der Benutzertabelle fern.
 
 
 
