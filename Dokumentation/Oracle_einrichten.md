@@ -13,11 +13,11 @@ Wir verwenden im Workshop die Kostenlose Oracle XE Version. Die Installationsdat
 ###Kurzanleitung
 - Zip entpacken und `Disk1\setup.exe` ausführen
 
-![Screenshot Oracle Installer 1](https://github.com/bglu/lrWorkshop/blob/master/Dokumentation/img/oracle-installer01.png)
+![Screenshot Oracle Installer 1](img/oracleEinrichten/oracle-installer01.png)
 
 "Abbildung 1"
 
-![Screenshot Oracle Installer 2](https://github.com/bglu/lrWorkshop/blob/master/Dokumentation/img/oracle-installer02.png) 
+![Screenshot Oracle Installer 2](img/oracleEinrichten/oracle-installer02.png) 
 
 "Abbildung 2"
 
@@ -25,7 +25,7 @@ Wir verwenden im Workshop die Kostenlose Oracle XE Version. Die Installationsdat
 
 Wir empfehlen, den Standard-Wert zu übernehmen: `c:\oraclexe\`
 
-![Screenshot Oracle Installer 3](https://github.com/bglu/lrWorkshop/blob/master/Dokumentation/img/oracle-installer03.png) 
+![Screenshot Oracle Installer 3](img/oracleEinrichten/oracle-installer03.png) 
 
 "Abbildung 3"
 
@@ -33,15 +33,15 @@ Wir empfehlen, den Standard-Wert zu übernehmen: `c:\oraclexe\`
 
 **Dieses Passwort unbedingt merken!** Es ist das Systempasswort.
 
-![Screenshot Oracle Installer 4](https://github.com/bglu/lrWorkshop/blob/master/Dokumentation/img/oracle-installer04.png) 
+![Screenshot Oracle Installer 4](img/oracleEinrichten/oracle-installer04.png) 
 
 "Abbildung 4"
 
-![Screenshot Oracle Installer 5](https://github.com/bglu/lrWorkshop/blob/master/Dokumentation/img/oracle-installer05.png) 
+![Screenshot Oracle Installer 5](img/oracleEinrichten/oracle-installer05.png) 
 
 "Abbildung 5"
 
-![Screenshot Oracle Installer 6](https://github.com/bglu/lrWorkshop/blob/master/Dokumentation/img/oracle-installer06.png) 
+![Screenshot Oracle Installer 6](img/oracleEinrichten/oracle-installer06.png) 
 
 "Abbildung 6"
 
@@ -56,7 +56,7 @@ Jeder Benutzer hat in Oracle einen *default Tablespace*, auf dem er beim Verbind
 
 Zuerst öffnen wir ein Oracle SQL Terminal. Dieses finden wir im Starmenü:
 
-![Screenshot Run SQL Command](https://github.com/bglu/lrWorkshop/blob/master/Dokumentation/img/Oracle_RunSql.png)
+![Screenshot Run SQL Command](img/oracleEinrichten/Oracle_RunSql.png)
 
 "Abbildung 7"
 
@@ -103,13 +103,13 @@ Wir kopieren (**nicht verschieben/auschneiden**) diese Bibliothek nach `C:\lifer
 ###Ojdbc in Server Classpath eintragen
 In der Eclipse öffnen wir nun die Servereinstellungen, indem wir doppelt auf dem Server im linken unteren Bereich klicken. Dann in den Einstellungen auf den Link `Open launch configuration` klicken:
 
-![Screenshot - Eclipse - Open launch configuration](https://github.com/bglu/lrWorkshop/blob/master/Dokumentation/img/eclipse-launch-config.png)
+![Screenshot - Eclipse - Open launch configuration](img/oracleEinrichten/eclipse-launch-config.png)
 
 "Abbildung 8"
 
 Hier nun im Reiter *Classpath* die Bibliothek mit *Add External JARs...* hinzufügen. Anschließend mit Stg+S Speichern.
 
-![Screenshot - Eclipse - Server Classpath](https://github.com/bglu/lrWorkshop/blob/master/Dokumentation/img/eclipse-server-classpath.png)
+![Screenshot - Eclipse - Server Classpath](img/oracleEinrichten/eclipse-server-classpath.png)
 
 
 ###Portal-ext.properties erstellen
@@ -151,7 +151,7 @@ Das Programm wird im Workshop verteilt. Man kann es einfach in einen beliebigen 
 
 Dort fügen wir einen neuen *Alias* hinzu, sodaß wir uns immer wieder bequem mit den gleichen Einstellungen verbinden können:
 
-![Screenshot - SquiirelSQL - Alias anlegen](https://github.com/bglu/lrWorkshop/blob/master/Dokumentation/img/squirrel01.png)
+![Screenshot - SquiirelSQL - Alias anlegen](img/oracleEinrichten/squirrel01.png)
 
 Im nun folgenden Dialog vergeben wir folgende Werte:
 
@@ -161,16 +161,16 @@ Im nun folgenden Dialog vergeben wir folgende Werte:
 - UserName: sa
 - Password: [passwort des Benutzers sa]
 
-![Screenshot - SquiirelSQL - Alias anlegen](https://github.com/bglu/lrWorkshop/blob/master/Dokumentation/img/squirrel02.png)
+![Screenshot - SquiirelSQL - Alias anlegen](img/oracleEinrichten/squirrel02.png)
 
 Mit der Schaltfläche *Test* können wir die Einstellungen prüfen.
 
 Wenn der Test erfolgreich ist, schließen wir den Dialog mit *OK*. Ein Doppelklick auf den neu angelegten Alias öffnen nun ein Dialogfeld, dass wir zum Verbinden benutzen können. Hier einfach auf *Connect* klicken.
 
-![Screenshot - SquiirelSQL - Verbinden](https://github.com/bglu/lrWorkshop/blob/master/Dokumentation/img/squirrel03.png)
+![Screenshot - SquiirelSQL - Verbinden](img/oracleEinrichten/squirrel03.png)
 
 Evtl. wird Squiirel meckern, dass das Laden des Schemas ungewöhnlich lange dauert. Dies ist normal und kann ignoriert werden.
 
 Wenn die Schemata geladen sind, sollte es im Baum das Schema *SA* geben, welches wir mit Doppelklick öffnen können. Mit einem Klick auf *Table* können wir auch die Tabellen von Liferay öffnen und durchstöbern.
 
-![Screenshot - SquiirelSQL - Tabellen ansehen](https://github.com/bglu/lrWorkshop/blob/master/Dokumentation/img/squirrel04.png)
+![Screenshot - SquiirelSQL - Tabellen ansehen](img/oracleEinrichten/squirrel04.png)

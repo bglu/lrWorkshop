@@ -1,5 +1,7 @@
 #CleverBotJSF-Portlet
 
+#<font color="red">Noch nicht ausgeschrieben</font>
+
 Wir bauen das gleiche Portlet noch einmal mit JSF
 
 
