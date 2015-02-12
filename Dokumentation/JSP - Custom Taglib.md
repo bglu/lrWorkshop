@@ -32,7 +32,7 @@ Zuletzt geben wir bei `body-conent` mit *empty* an, dass unser Tag keinen Body v
 
 ```JSP
 <lit:UserTable />
-````
+```
 
 
 
@@ -148,17 +148,17 @@ Jetzt fügen wir alles zusammen uns überschreiben die *doTag* Methode wie folgt
 public void doTag() throws JspException, IOException {
     Template t = initVelocityTemplate();
     VelocityContext ctx = new VelocityContext();
-	
+
     List<User> userList = getUserList();
     ctx.put("userList", userList);
-	
+
     StringWriter writer = new StringWriter();
     t.merge(ctx, writer);
-	
+
     JspWriter out = getJspContext().getOut();
     out.write(writer.toString());
-	
+
 }
 ```
 
-Nach einem (Clean und) Redeploy sollte unsere Benutzertabelle nun richtig gerendert werden.
+Nach einem *(Clean und)* Redeploy sollte unsere Benutzertabelle nun richtig gerendert werden.
