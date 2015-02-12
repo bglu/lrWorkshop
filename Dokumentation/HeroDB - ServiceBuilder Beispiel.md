@@ -303,7 +303,7 @@ Den Body-Teil in der `/herodb-portlet/src/main/webapp/views/view.xhtml` ersetzen
 
 Das Portlet sollte nun eine Liste mit einem Eintrag anzeigen.
 
-![Screenshot Portlet zeigt Datensatz](img/herodbportlet/herodb_002_portlet_zeigt_einen_Datensatz_an.PNG) 
+![Screenshot Portlet zeigt Datensatz](img/herodbPortlet/herodb_002_portlet_zeigt_einen_Datensatz_an.PNG)
 
 Somit können wir Datensätze aus der Datenbank lesen und anzeigen.
 
