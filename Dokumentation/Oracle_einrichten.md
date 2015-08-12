@@ -174,3 +174,16 @@ Evtl. wird Squiirel meckern, dass das Laden des Schemas ungewöhnlich lange daue
 Wenn die Schemata geladen sind, sollte es im Baum das Schema *SA* geben, welches wir mit Doppelklick öffnen können. Mit einem Klick auf *Table* können wir auch die Tabellen von Liferay öffnen und durchstöbern.
 
 ![Screenshot - SquiirelSQL - Tabellen ansehen](img/oracleEinrichten/squirrel04.png)
+
+##Datenbank Dump erstellen
+
+    C:\oraclexe\app\oracle\product\11.2.0\server\bin\expdp system/fun DIRECTORY=DATA_PUMP_DIR DUMPFILE=2015_08_12.dmp
+    
+Danach liegt das Dump file unter: 
+
+    C:\oraclexe\app\oracle\admin\XE\dpdump
+    
+## Datenbank Dump importieren
+
+    C:\oraclexe\app\oracle\product\11.2.0\server\bin\impdp system/fun DIRECTORY=DATA_PUMP_DIR DUMPFILE=2015_08_12.dmp full=y
+    
