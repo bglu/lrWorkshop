@@ -177,7 +177,7 @@ Wenn die Schemata geladen sind, sollte es im Baum das Schema *SA* geben, welches
 
 ##Datenbank Dump erstellen
 
-    C:\oraclexe\app\oracle\product\11.2.0\server\bin\expdp system/fun DIRECTORY=DATA_PUMP_DIR DUMPFILE=2015_08_12.dmp
+    C:\oraclexe\app\oracle\product\11.2.0\server\bin\expdp sa/fun DIRECTORY=DATA_PUMP_DIR DUMPFILE=2015_08_12.dmp
     
 Danach liegt das Dump file unter: 
 
@@ -185,5 +185,5 @@ Danach liegt das Dump file unter:
     
 ## Datenbank Dump importieren
 
-    C:\oraclexe\app\oracle\product\11.2.0\server\bin\impdp system/fun DIRECTORY=DATA_PUMP_DIR DUMPFILE=2015_08_12.dmp full=y
+    C:\oraclexe\app\oracle\product\11.2.0\server\bin\impdp sa/fun DIRECTORY=DATA_PUMP_DIR DUMPFILE=2015_08_12.dmp full=y
     
